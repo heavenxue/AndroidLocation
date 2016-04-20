@@ -2,186 +2,186 @@ package com.iapppay.lixue.loacationutil;
 
 import android.location.Location;
 
-public class HalopayLocation extends Location{
-	  private static final int TYPE_GSM = 0;
-	  private static final int TYPE_CDMA = 1;
-	  private static final int TYPE_NONE = -1;
-	  private static final int NONE_CELLID = -1;
-	  private static final int NONE_LACID = -1;
-	  private int type;
-	  private int cellId;
-	  private int lacId;
-	  private boolean isCorrected = false;
-	  private String addrStr;
-	  private String province;
-	  private String city;
-	  private String district;
-	  private boolean hasPoi;
-	  private String poi;
-	  private int satelliteNumber;
-	  private float radius;
-	  private int dataSource;
-	  private String coordinateSys;
+public class HalopayLocation extends Location {
+    private static final int TYPE_GSM = 0;
+    private static final int TYPE_CDMA = 1;
+    private static final int TYPE_NONE = -1;
+    private static final int NONE_CELLID = -1;
+    private static final int NONE_LACID = -1;
+    private int type;
+    private int cellId;
+    private int lacId;
+    private boolean isCorrected = false;
+    private String addrStr;
+    private String province;
+    private String city;
+    private String district;
+    private boolean hasPoi;
+    private String poi;
+    private int satelliteNumber;
+    private float radius;
+    private int dataSource;
+    private String coordinateSys;
 
-	public HalopayLocation(Location location) {
-		super(location);
-		// TODO Auto-generated constructor stub
-	}
-	public HalopayLocation(String provider) {
-	    super(provider);
-	  }
+    public HalopayLocation(Location location) {
+        super(location);
+        // TODO Auto-generated constructor stub
+    }
 
-	  public String getCoordinateSystem()
-	  {
-	    return this.coordinateSys;
-	  }
+    public HalopayLocation(String provider) {
+        super(provider);
+    }
 
-	  public void setCoordinateSystem(String data) {
-	    this.coordinateSys = data;
-	  }
+    public HalopayLocation(String provider, int type, int cellId, int lacId) {
+        super(provider);
+        this.type = type;
+        this.cellId = cellId;
+        this.lacId = lacId;
+    }
 
-	  public int getDataSource() {
-	    return this.dataSource;
-	  }
+    public String getCoordinateSystem() {
+        return this.coordinateSys;
+    }
 
-	  public void setDataSource(int data) {
-	    this.dataSource = data;
-	  }
+    public void setCoordinateSystem(String data) {
+        this.coordinateSys = data;
+    }
 
-	  public String getAddrStr() {
-	    return this.addrStr;
-	  }
+    public int getDataSource() {
+        return this.dataSource;
+    }
 
-	  public void setAddrStr(String addrStr) {
-	    this.addrStr = addrStr;
-	  }
+    public void setDataSource(int data) {
+        this.dataSource = data;
+    }
 
-	  public String getProvince() {
-	    return this.province;
-	  }
+    public String getAddrStr() {
+        return this.addrStr;
+    }
 
-	  public void setProvince(String province) {
-	    this.province = province;
-	  }
+    public void setAddrStr(String addrStr) {
+        this.addrStr = addrStr;
+    }
 
-	  public String getCity() {
-	    return this.city;
-	  }
+    public String getProvince() {
+        return this.province;
+    }
 
-	  public void setCity(String city) {
-	    this.city = city;
-	  }
+    public void setProvince(String province) {
+        this.province = province;
+    }
 
-	  public String getDistrict() {
-	    return this.district;
-	  }
+    public String getCity() {
+        return this.city;
+    }
 
-	  public void setDistrict(String district) {
-	    this.district = district;
-	  }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	  public boolean isHasPoi() {
-	    return this.hasPoi;
-	  }
+    public String getDistrict() {
+        return this.district;
+    }
 
-	  public void setHasPoi(boolean hasPoi) {
-	    this.hasPoi = hasPoi;
-	  }
+    public void setDistrict(String district) {
+        this.district = district;
+    }
 
-	  public String getPoi() {
-	    return this.poi;
-	  }
+    public boolean isHasPoi() {
+        return this.hasPoi;
+    }
 
-	  public void setPoi(String poi) {
-	    this.poi = poi;
-	  }
+    public void setHasPoi(boolean hasPoi) {
+        this.hasPoi = hasPoi;
+    }
 
-	  public float getRadius() {
-	    return this.radius;
-	  }
+    public String getPoi() {
+        return this.poi;
+    }
 
-	  public void setRadius(float radius) {
-	    this.radius = radius;
-	  }
-	  public int getSatelliteNumber() {
-	    return this.satelliteNumber;
-	  }
+    public void setPoi(String poi) {
+        this.poi = poi;
+    }
 
-	  public void setSatelliteNumber(int satelliteNumber) {
-	    this.satelliteNumber = satelliteNumber;
-	  }
+    public float getRadius() {
+        return this.radius;
+    }
 
-	  public HalopayLocation(String provider, int type, int cellId, int lacId) {
-	    super(provider);
-	    this.type = type;
-	    this.cellId = cellId;
-	    this.lacId = lacId;
-	  }
+    public void setRadius(float radius) {
+        this.radius = radius;
+    }
 
-	  public int getType() {
-	    return this.type;
-	  }
+    public int getSatelliteNumber() {
+        return this.satelliteNumber;
+    }
 
-	  public void setType(int type) {
-	    if ((type != 0) && (type != 1)) {
-	      type = -1;
-	    }
-	    this.type = type;
-	  }
+    public void setSatelliteNumber(int satelliteNumber) {
+        this.satelliteNumber = satelliteNumber;
+    }
 
-	  public int getCellId() {
-	    return this.cellId;
-	  }
+    public int getType() {
+        return this.type;
+    }
 
-	  public void setCellId(int cellId) {
-	    if (cellId < 0) {
-	      cellId = -1;
-	    }
-	    this.cellId = cellId;
-	  }
+    public void setType(int type) {
+        if ((type != 0) && (type != 1)) {
+            type = -1;
+        }
+        this.type = type;
+    }
 
-	  public int getLacId() {
-	    return this.lacId;
-	  }
+    public int getCellId() {
+        return this.cellId;
+    }
 
-	  public void setLacId(int lacId) {
-	    if (lacId < 0) {
-	      lacId = -1;
-	    }
-	    this.lacId = lacId;
-	  }
+    public void setCellId(int cellId) {
+        if (cellId < 0) {
+            cellId = -1;
+        }
+        this.cellId = cellId;
+    }
 
-	  public boolean isCorrected() {
-	    return this.isCorrected;
-	  }
+    public int getLacId() {
+        return this.lacId;
+    }
 
-	  public void setCorrected(boolean isCorrected) {
-	    this.isCorrected = isCorrected;
-	  }
+    public void setLacId(int lacId) {
+        if (lacId < 0) {
+            lacId = -1;
+        }
+        this.lacId = lacId;
+    }
 
-	  public String getTypeReadable() {
-	    String cardType = "";
-	    switch (this.type) {
-	    case 0:
-	      cardType = "GSM";
-	      break;
-	    case 1:
-	      cardType = "CDMA";
-	      break;
-	    case -1:
-	    }
+    public boolean isCorrected() {
+        return this.isCorrected;
+    }
 
-	    return cardType;
-	  }
+    public void setCorrected(boolean isCorrected) {
+        this.isCorrected = isCorrected;
+    }
 
-	  public float getFilteredDistance(HalopayLocation dest)
-	  {
-	    float distance = distanceTo(dest);
+    public String getTypeReadable() {
+        String cardType = "";
+        switch (this.type) {
+            case 0:
+                cardType = "GSM";
+                break;
+            case 1:
+                cardType = "CDMA";
+                break;
+            case -1:
+        }
 
-	    if (distance > 10.0F) {
-	      return distance;
-	    }
+        return cardType;
+    }
 
-	    return 0.0F;
-	  }
+    public float getFilteredDistance(HalopayLocation dest) {
+        float distance = distanceTo(dest);
+
+        if (distance > 10.0F) {
+            return distance;
+        }
+
+        return 0.0F;
+    }
 }

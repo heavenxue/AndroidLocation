@@ -8,5 +8,7 @@
         >
 
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>  //基站定位权限
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>//GPS定位权限
+    <uses-permission android:name="android.permission.INTERNET" />//获取网络权限
 </manifest>
