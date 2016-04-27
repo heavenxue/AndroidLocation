@@ -6,6 +6,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.iapppay.lixue.permissionlib.MPermissions;
+
 public class GpsLocationManager extends BaseLocationManager {
     private HalopayLocationListener listener;
     private LocationManager mLocationManager;
@@ -30,7 +32,7 @@ public class GpsLocationManager extends BaseLocationManager {
     }
 
     public void destroy() {
-        if (this.mLocationManager != null)
+        if (this.mLocationManager != null){}
             this.mLocationManager.removeUpdates(this);
     }
 

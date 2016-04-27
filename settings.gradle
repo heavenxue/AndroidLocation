@@ -1,1 +1,1 @@
-include ':app', ':loacationutil'
+include ':app', ':loacationutil', ':permissionlib'
