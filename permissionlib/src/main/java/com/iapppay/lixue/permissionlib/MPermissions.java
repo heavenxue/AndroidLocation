@@ -2,6 +2,7 @@ package com.iapppay.lixue.permissionlib;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,26 @@ import java.util.List;
 public class MPermissions {
     private static final String TAG = "MPermissions";
     private static final String SUFFIX = "$$PermissionProxy";
+
+    private static MPermissions mInstance;
+
+    /**单例模式*/
+    public static MPermissions getmInstance(Context context){
+        if (mInstance == null){
+            synchronized (MPermissions.class){
+                if (mInstance == null){
+                    mInstance = new MPermissions(context.getApplicationContext());
+                }
+            }
+        }
+        return mInstance;
+    }
+
+    private Context mCtx;
+
+    public MPermissions(Context context){
+        this.mCtx = context;
+    }
 
     public static void requestPermissions(Activity activity,int requestCode,String... permissions){
         _requestPermissions(activity,requestCode,permissions);

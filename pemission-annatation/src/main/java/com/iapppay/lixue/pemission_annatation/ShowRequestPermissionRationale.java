@@ -1,4 +1,4 @@
-package com.iapppay.lixue.permissionlib.annotation;
+package com.iapppay.lixue.pemission_annatation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

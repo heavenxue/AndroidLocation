@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidLocation.iml" filepath="$PROJECT_DIR$/AndroidLocation.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/compiler/compiler.iml" filepath="$PROJECT_DIR$/compiler/compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/loacationutil/loacationutil.iml" filepath="$PROJECT_DIR$/loacationutil/loacationutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pemission-annatation/pemission-annatation.iml" filepath="$PROJECT_DIR$/pemission-annatation/pemission-annatation.iml" />
       <module fileurl="file://$PROJECT_DIR$/permissionlib/permissionlib.iml" filepath="$PROJECT_DIR$/permissionlib/permissionlib.iml" />
     </modules>
   </component>

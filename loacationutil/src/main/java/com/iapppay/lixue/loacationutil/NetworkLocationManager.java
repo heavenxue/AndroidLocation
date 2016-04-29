@@ -11,9 +11,10 @@ public class NetworkLocationManager extends BaseLocationManager {
 
     public NetworkLocationManager(Context context, HalopayLocationListener listener) {
         this.listener = listener;
-        this.mLocationManager = ((LocationManager) context.getSystemService("location"));
+        this.mLocationManager = ((LocationManager) context.getSystemService(Context.LOCATION_SERVICE));
     }
 
+    @Override
     public void requestLocationUpdates(long minTime, float minDistance) {
         if (this.mLocationManager != null) {
             this.mLocationManager.removeUpdates(this);
@@ -31,6 +32,7 @@ public class NetworkLocationManager extends BaseLocationManager {
             this.mLocationManager.removeUpdates(this);
     }
 
+    @Override
     public void onLocationChanged(Location location) {
         if ((this.listener != null) && (location != null)) {
             HalopayLocation ycLocation = new HalopayLocation(location);
@@ -43,16 +45,19 @@ public class NetworkLocationManager extends BaseLocationManager {
         }
     }
 
+    @Override
     public void onProviderDisabled(String provider) {
         if (this.listener != null)
             this.listener.onProviderDisabled(provider);
     }
 
+    @Override
     public void onProviderEnabled(String provider) {
         if (this.listener != null)
             this.listener.onProviderEnabled(provider);
     }
 
+    @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
         if (this.listener != null)
             this.listener.onStatusChanged(provider, status, extras);

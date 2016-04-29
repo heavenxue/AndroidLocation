@@ -1,11 +1,11 @@
 package com.iapppay.lixue.loacationutil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.location.LocationManager;
 import android.os.Handler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LocationAPI {
     private static HalopayLocation lastLocation;
@@ -19,7 +19,7 @@ public class LocationAPI {
 
     public LocationAPI(Context c) {
         this.context = c;
-        LocationManager locationManager = (LocationManager) this.context.getSystemService("location");
+        LocationManager locationManager = (LocationManager) this.context.getSystemService(Context.LOCATION_SERVICE);
         this.allProviders = locationManager.getAllProviders();
     }
 

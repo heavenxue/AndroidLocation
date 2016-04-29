@@ -6,15 +6,14 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.iapppay.lixue.permissionlib.MPermissions;
-
 public class GpsLocationManager extends BaseLocationManager {
+    private final static int REQUECT_CODE_LOCATION = 10011;
     private HalopayLocationListener listener;
     private LocationManager mLocationManager;
 
     public GpsLocationManager(Context context, HalopayLocationListener listener) {
         this.listener = listener;
-        this.mLocationManager = ((LocationManager) context.getSystemService("location"));
+        this.mLocationManager = ((LocationManager) context.getSystemService(Context.LOCATION_SERVICE));
     }
 
     public void requestLocationUpdates(long minTime, float minDistance) {
@@ -36,6 +35,7 @@ public class GpsLocationManager extends BaseLocationManager {
             this.mLocationManager.removeUpdates(this);
     }
 
+    @Override
     public void onLocationChanged(Location location) {
         if ((this.listener != null) && (location != null)) {
             HalopayLocation ycLocation = new HalopayLocation(location);
@@ -48,11 +48,13 @@ public class GpsLocationManager extends BaseLocationManager {
         }
     }
 
+    @Override
     public void onProviderDisabled(String provider) {
         if (this.listener != null)
             this.listener.onProviderDisabled(provider);
     }
 
+    @Override
     public void onProviderEnabled(String provider) {
         if (this.listener != null) {
             Log.e("GPS", "onProviderEnabled:" + provider);
@@ -60,6 +62,7 @@ public class GpsLocationManager extends BaseLocationManager {
         }
     }
 
+    @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
         if (this.listener != null)
             this.listener.onStatusChanged(provider, status, extras);

@@ -1,7 +1,9 @@
 package com.iapppay.lixue.loacationutil;
 
+import android.annotation.SuppressLint;
 import android.location.Location;
 
+@SuppressLint("ParcelCreator")
 public class HalopayLocation extends Location {
     private static final int TYPE_GSM = 0;
     private static final int TYPE_CDMA = 1;

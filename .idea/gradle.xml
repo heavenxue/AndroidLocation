@@ -10,7 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/loacationutil" />
+            <option value="$PROJECT_DIR$/pemission-annatation" />
             <option value="$PROJECT_DIR$/permissionlib" />
           </set>
         </option>
@@ -18,7 +20,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/loacationutil" />
+            <option value="$PROJECT_DIR$/pemission-annatation" />
             <option value="$PROJECT_DIR$/permissionlib" />
           </set>
         </option>
