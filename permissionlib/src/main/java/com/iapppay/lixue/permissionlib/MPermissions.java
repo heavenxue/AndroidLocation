@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
@@ -36,6 +37,16 @@ public class MPermissions {
 
     public MPermissions(Context context){
         this.mCtx = context;
+    }
+
+    public static boolean shouldShowRequestPermissionRationale(Activity activity, String permission, int requestCode) {
+        PermissionProxy proxy = findPermissionProxy(activity);
+        if (!proxy.needRational(requestCode)) return false;
+        if (ActivityCompat.shouldShowRequestPermissionRationale(activity,permission)) {
+            proxy.rational(activity, requestCode);
+            return true;
+        }
+        return false;
     }
 
     public static void requestPermissions(Activity activity,int requestCode,String... permissions){

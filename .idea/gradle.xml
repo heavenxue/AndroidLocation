@@ -12,8 +12,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/loacationutil" />
-            <option value="$PROJECT_DIR$/pemission-annatation" />
             <option value="$PROJECT_DIR$/permissionlib" />
+            <option value="$PROJECT_DIR$/permissions-annatation" />
           </set>
         </option>
         <option name="myModules">
@@ -22,8 +22,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/loacationutil" />
-            <option value="$PROJECT_DIR$/pemission-annatation" />
             <option value="$PROJECT_DIR$/permissionlib" />
+            <option value="$PROJECT_DIR$/permissions-annatation" />
           </set>
         </option>
       </GradleProjectSettings>

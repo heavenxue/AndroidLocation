@@ -12,6 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.PermissionDenied;
+import com.example.PermissionGrant;
+import com.example.ShowRequestPermissionRationale;
+import com.iapppay.lixue.permissionlib.MPermissions;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -44,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                tv_location_base.setText("纬度:" + LocationAPI.getLastKnownLocation().getLatitude() + ",经度：" + LocationAPI.getLastKnownLocation().getLongitude());
+                if (!MPermissions.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION, REQUECT_CODE_LOCATION)) {
+                    MPermissions.requestPermissions(MainActivity.this, REQUECT_CODE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION);
+                }
             }
         });
     }
@@ -99,6 +108,31 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUECT_CODE_LOCATION);
 //            }
         }
+    }
+
+    @ShowRequestPermissionRationale(REQUECT_CODE_LOCATION)
+    public void whyNeedSdCard() {
+        Toast.makeText(this, "I need write news to sdcard!", Toast.LENGTH_SHORT).show();
+        MPermissions.requestPermissions(MainActivity.this, REQUECT_CODE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION);
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        MPermissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    @PermissionGrant(REQUECT_CODE_LOCATION)
+    public void requestSdcardSuccess() {
+        Toast.makeText(this, "GRANT ACCESS LOCATION!", Toast.LENGTH_SHORT).show();
+    }
+
+    @PermissionDenied(REQUECT_CODE_LOCATION)
+    public void requestSdcardFailed() {
+        Toast.makeText(this, "DENY ACCESS LOCATION!", Toast.LENGTH_SHORT).show();
     }
 
 }
