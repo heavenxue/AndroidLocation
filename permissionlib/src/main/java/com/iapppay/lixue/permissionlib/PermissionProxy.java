@@ -8,5 +8,5 @@ public interface PermissionProxy<T> {
     void grant(T source,int requestCode);
     void denied(T source,int requestCode);
     void rational(T source,int requestCode);
-    void needRational(T source,int requestCode);
+    boolean needRational(int requestCode);
 }

@@ -60,7 +60,7 @@ public class ProxyInfo {
 
     private void generateRationaleMethod(StringBuilder builder) {
         builder.append("@Override\n ");
-        builder.append("public void rationale(" + typeElement.getSimpleName() + " source , int requestCode) {\n");
+        builder.append("public void rational(" + typeElement.getSimpleName() + " source , int requestCode) {\n");
         builder.append("switch(requestCode) {");
         for (int code : rationaleMethodMap.keySet()) {
             builder.append("case " + code + ":");
@@ -74,7 +74,7 @@ public class ProxyInfo {
         ///
 
         builder.append("@Override\n ");
-        builder.append("public boolean needShowRationale(int requestCode) {\n");
+        builder.append("public boolean needRational(int requestCode) {\n");
         builder.append("switch(requestCode) {");
         for (int code : rationaleMethodMap.keySet()) {
             builder.append("case " + code + ":");

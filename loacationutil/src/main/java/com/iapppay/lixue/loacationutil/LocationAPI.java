@@ -32,12 +32,12 @@ public class LocationAPI {
     }
 
     public void getChangeCurLocation(HalopayLocationListener listener) {
-        if ((this.allProviders != null) && (this.allProviders.contains("gps"))) {
+        if ((this.allProviders != null) && (this.allProviders.contains(LocationManager.GPS_PROVIDER))) {
             this.gpsLocationManager = new GpsLocationManager(this.context, listener);
             this.gpsLocationManager.requestLocationUpdates(this.UPDATE_INTERVAL, this.minDistance);
         }
 
-        if ((this.allProviders != null) && (this.allProviders.contains("network")))
+        if ((this.allProviders != null) && (this.allProviders.contains(LocationManager.NETWORK_PROVIDER)))
             try {
                 this.networkLocationManager = new NetworkLocationManager(this.context, listener);
                 this.networkLocationManager.requestLocationUpdates(this.UPDATE_INTERVAL, this.minDistance);

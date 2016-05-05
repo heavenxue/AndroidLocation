@@ -18,7 +18,7 @@ public class NetworkLocationManager extends BaseLocationManager {
     public void requestLocationUpdates(long minTime, float minDistance) {
         if (this.mLocationManager != null) {
             this.mLocationManager.removeUpdates(this);
-            this.mLocationManager.requestLocationUpdates("network", minTime, minDistance, this);
+            this.mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, minTime, minDistance, this);
         }
     }
 

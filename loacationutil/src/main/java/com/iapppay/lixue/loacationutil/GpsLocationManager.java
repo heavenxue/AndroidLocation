@@ -18,7 +18,7 @@ public class GpsLocationManager extends BaseLocationManager {
 
     public void requestLocationUpdates(long minTime, float minDistance) {
         if (this.mLocationManager != null)
-            this.mLocationManager.requestLocationUpdates("gps", minTime, minDistance, this);
+            this.mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, this);
     }
 
     public void registerListener(HalopayLocationListener listener) {
@@ -40,7 +40,7 @@ public class GpsLocationManager extends BaseLocationManager {
         if ((this.listener != null) && (location != null)) {
             HalopayLocation ycLocation = new HalopayLocation(location);
             ycLocation.setDataSource(10001);
-            ycLocation.setProvider("gps");
+            ycLocation.setProvider(LocationManager.GPS_PROVIDER);
             ycLocation.setRadius(location.getAccuracy());
             ycLocation.setCoordinateSystem("world");
             LocationAPI.setLastKnownLocation(ycLocation);

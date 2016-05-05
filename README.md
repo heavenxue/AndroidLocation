@@ -1,75 +1,84 @@
 
 AndroidLocation
 ===================================
-  获取经纬度，获取原则，
+  获取经纬度，获取原则：异步通过获取GPS,网络获取经纬度
 
   
-中标题
+科普
 -----------------------------------
-  中标题一般显示重点项,类似html的\<h2\><br />
-  你只要在标题下面输入------即可
+    手机定位：
+    *GPS模块：GPS方式准确度是最高的，但是它的缺点也非常明显：
+    1，比较耗电；
+    2，绝大部分用户默认不开启GPS模块；
+    3，从GPS模块启动到获取第一次定位数据，可能需要比较长的时间；
+    4，室内几乎无法使用。这其中，缺点2,3都是比较致命的。需要指出的是，GPS走的是卫星通信的通道，在没有网络连接的情况下也能用。
+    *基站定位 大致思路就是采集到手机上的基站ID号（cellid）和其它的一些信息（MNC，MCC，LAC等等），\n
+    然后通过网络访问一些定位服务，获取并返回对应的经纬度坐标。基站定位的精确度不如GPS，但好处是能够在室内用，只要网络通畅就行。
+    *WIFI定位 和基站定位类似，这种方式是通过获取当前所用的wifi的一些信息，然后访问网络上的定位服务以获得经纬度坐标。\n
+    因为它和基站定位其实都需要使用网络，所以在Android也统称为Network方式。
+
+    所以此项目包含的即GPS定位和网络定位，基站定位也无非是网络定位的一种
+
+-----------------------------------
   
-### 小标题
-  小标题类似html的\<h3\><br />
-  小标题的格式如下 ### 小标题<br />
-  注意#和标题字符中间要有空格
+### 权限
+    此项目中囊括了针对androidM系统访问权限的集成，感谢[](https://github.com/hongyangAndroid/PermissionGen)<br />\<h3\><br />
 
-### 注意!!!下面所有语法的提示我都先用小标题提醒了!!! 
+### 使用
+####定位
+    初始化
+    locationAPI = new LocationAPI(getApplicationContext());
+            locationAPI.getChangeCurLocation(new HalopayLocationListener() {
 
-### 单行文本框
-    这是一个单行的文本框,只要两个Tab再输入文字即可
-        
-### 多行文本框  
-    这是一个有多行的文本框
-    你可以写入代码等,每行文字只要输入两个Tab再输入文字即可
-    这里你可以输入一段代码
+                @Override
+                public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle) {
+                    // TODO Auto-generated method stub
 
-### 比如我们可以在多行文本框里输入一段代码,来一个Java版本的HelloWorld吧
-    public class HelloWorld {
+                }
 
-      /**
-      * @param args
-	    */
-	    public static void main(String[] args) {
-		    System.out.println("HelloWorld!");
+                @Override
+                public void onProviderEnabled(String paramString) {
+                    // TODO Auto-generated method stub
 
-	    }
+                }
 
+                @Override
+                public void onProviderDisabled(String paramString) {
+                    // TODO Auto-generated method stub
+
+                }
+
+                @Override
+                public void onLocationFail(String paramString) {
+                    // TODO Auto-generated method stub
+
+                }
+
+                @Override
+                public void onLocationChanged(HalopayLocation paramYongcheLocation) {
+                    // TODO Auto-generated method stub
+                    Log.i("纬度：", "" + paramYongcheLocation.getLatitude());//纬度
+                    Log.i("经度：", "" + paramYongcheLocation.getLongitude());//经度
+                }
+            });
+    获取经纬度：
+    tv_location_base.setText("纬度:" + LocationAPI.getLastKnownLocation().getLatitude() + ",经度：" + LocationAPI.getLastKnownLocation().getLongitude());
+####权限
+*申请权限
+    MPermissions.requestPermissions(MainActivity.this, REQUECT_CODE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION);
+*处理权限回调
+    @Override
+        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+            MPermissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+*是否弹出解释
+    if (!MPermissions.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUECT_CODE_SDCARD)){
+        MPermissions.requestPermissions(MainActivity.this, REQUECT_CODE_SDCARD, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
-### 链接
-1.[点击这里你可以链接到www.google.com](http://www.google.com)<br />
-2.[点击这里我你可以链接到我的博客](http://guoyunsky.iteye.com)<br />
+    如果需要解释，会自动执行使用@ShowRequestPermissionRationale注解的方法。
 
-###只是显示图片
-![github](http://github.com/unicorn.png "github")
+    授权成功以及失败调用的分支方法通过注解@PermissionGrant和@PermissionDenied进行标识，详细参考我项目中app例子。
 
-###想点击某个图片进入一个网页,比如我想点击github的icorn然后再进入www.github.com
-[![image]](http://www.github.com/)
-[image]: http://github.com/github.png "github"
-
-### 文字被些字符包围
-> 文字被些字符包围
->
-> 只要再文字前面加上>空格即可
->
-> 如果你要换行的话,新起一行,输入>空格即可,后面不接文字
-> 但> 只能放在行首才有效
-
-### 文字被些字符包围,多重包围
-> 文字被些字符包围开始
->
-> > 只要再文字前面加上>空格即可
->
->  > > 如果你要换行的话,新起一行,输入>空格即可,后面不接文字
->
-> > > > 但> 只能放在行首才有效
-
-### 特殊字符处理
-有一些特殊字符如<,#等,只要在特殊字符前面加上转义字符\即可<br />
-你想换行的话其实可以直接用html标签\<br /\>
-
-
-
-* 在行首加点
-行首输入*，空格后输入内容即可
-    
+###注意
+    本文中利用了AndroidAnnotations注解框架

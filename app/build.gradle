@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:design:23.2.0'
     compile project(':permissionlib')
     apt project(':compiler')
+    compile project(':loacationutil')
 }
