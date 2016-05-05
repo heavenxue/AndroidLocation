@@ -64,15 +64,15 @@ AndroidLocation
     获取经纬度：
     tv_location_base.setText("纬度:" + LocationAPI.getLastKnownLocation().getLatitude() + ",经度：" + LocationAPI.getLastKnownLocation().getLongitude());
 ####权限
-*申请权限
+    *申请权限
     MPermissions.requestPermissions(MainActivity.this, REQUECT_CODE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION);
-*处理权限回调
+    *处理权限回调
     @Override
         public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
             MPermissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-*是否弹出解释
+    *是否弹出解释
     if (!MPermissions.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUECT_CODE_SDCARD)){
         MPermissions.requestPermissions(MainActivity.this, REQUECT_CODE_SDCARD, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
