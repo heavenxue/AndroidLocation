@@ -24,7 +24,7 @@ AndroidLocation
 ### 权限
 
 此项目中囊括了针对`androidM`系统访问权限的集成<br/>
-感谢[](https://github.com/hongyangAndroid/PermissionGen)<br />\<h3\><br />
+[感谢](https://github.com/hongyangAndroid/PermissionGen)<br />\<h3\><br />
 
 ### 使用
 ####定位
